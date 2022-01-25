@@ -687,17 +687,17 @@ func (ec *ExecutionContext) Validate() error {
 		return fmt.Errorf("error while parsing the endpoint :%w", err)
 	}
 
-	err = util.GetServerStatus(ec.Config.GetVersionEndpoint())
-	if err != nil {
-		ec.Logger.Error("connecting to graphql-engine server failed")
-		ec.Logger.Info("possible reasons:")
-		ec.Logger.Info("1) Provided root endpoint of graphql-engine server is wrong. Verify endpoint key in config.yaml or/and value of --endpoint flag")
-		ec.Logger.Info("2) Endpoint should NOT be your GraphQL API, ie endpoint is NOT https://hasura-cloud-app.io/v1/graphql it should be: https://hasura-cloud-app.io")
-		ec.Logger.Info("3) Server might be unhealthy and is not running/accepting API requests")
-		ec.Logger.Info("4) Admin secret is not correct/set")
-		ec.Logger.Infoln()
-		return err
-	}
+	// err = util.GetServerStatus(ec.Config.GetVersionEndpoint())
+	// if err != nil {
+	// 	ec.Logger.Error("connecting to graphql-engine server failed")
+	// 	ec.Logger.Info("possible reasons:")
+	// 	ec.Logger.Info("1) Provided root endpoint of graphql-engine server is wrong. Verify endpoint key in config.yaml or/and value of --endpoint flag")
+	// 	ec.Logger.Info("2) Endpoint should NOT be your GraphQL API, ie endpoint is NOT https://hasura-cloud-app.io/v1/graphql it should be: https://hasura-cloud-app.io")
+	// 	ec.Logger.Info("3) Server might be unhealthy and is not running/accepting API requests")
+	// 	ec.Logger.Info("4) Admin secret is not correct/set")
+	// 	ec.Logger.Infoln()
+	// 	return err
+	// }
 
 	// get version from the server and match with the cli version
 	err = ec.checkServerVersion()
